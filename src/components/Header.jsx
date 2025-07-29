@@ -2,7 +2,7 @@
 
 function Header(){
     return(
-        <header>
+        <header className="bg-gradient-to-r from-slate-900 to-slate-700 text-white shadow-lg">
             <div>
                 <h1>Perpustakaan Sederhana</h1>
             </div>
