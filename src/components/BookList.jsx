@@ -1,6 +1,7 @@
 function BookList({ books }) {
     return (
-        <div>
+        <div className="container mx-auto px-6 py-8">
+            <div className="grid grid-cols-3">
             {books.map((book, index) => (
                 <div key={index}>
                     <div>
@@ -11,6 +12,8 @@ function BookList({ books }) {
                     </div>
                 </div>
             ))}
+            </div>
+           
         </div>
     );
 }
