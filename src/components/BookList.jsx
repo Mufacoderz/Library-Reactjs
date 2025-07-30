@@ -1,14 +1,16 @@
 function BookList({ books }) {
     return (
         <div className="container mx-auto px-6 py-8">
-            <div className="grid grid-cols-3">
+            <div className="grid grid-cols-3 gap-6">
             {books.map((book, index) => (
-                <div key={index}>
-                    <div>
-                        <h3>{book.title}</h3>
+                <div key={index} className="bg-white border-slate-200 rounded-xl shadow-sm hover:shadow-mg group transition-all duration-300 p-6">
+                    <div className="flex items-start gap-4">
+                        <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-slate-800 text-lg leading-tight mb-2">{book.title}</h3>
+                        </div>
                     </div>
-                    <div>
-                        <p>{book.author}</p>
+                    <div className="flex items-center gap-2 text-slate-600">
+                        <p className="text-sm">{book.author}</p>
                     </div>
                 </div>
             ))}
