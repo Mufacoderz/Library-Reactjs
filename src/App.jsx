@@ -3,6 +3,7 @@
 import Header from './components/Header'
 import BookList from './components/BookList'
 import { useEffect, useState } from 'react'
+import AddBookForm from './components/AddBook'
 
 
 function App() {
@@ -20,11 +21,16 @@ function App() {
   }, [])
 
 
+  const addBook = (book)=>{
+    setBooks([...books, book])
+  }
+
 
   return (
     <>
      <Header/>
      <BookList books={books}/>
+     <AddBookForm onAdd={addBook}/>
     </>
   )
 }
