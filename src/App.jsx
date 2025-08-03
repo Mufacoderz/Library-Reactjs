@@ -47,8 +47,8 @@ function App() {
   return (
     <>
      <Header/>
-     <BookList books={books}/>
      <AddBookForm onAdd={addBook}/>
+     <BookList books={books}/>
     </>
   )
 }
