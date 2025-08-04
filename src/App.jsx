@@ -37,13 +37,17 @@ function App() {
     setBooks([...books, book])
   }
 
+  const FilterBooks = books.filter((book) => 
+    book.title.toLowerCase().includes(query.toLowerCase())
+  );
+  
 
   return (
     <>
      <Header/>
      <AddBookForm onAdd={addBook}/>
      <SearchBook query={query} setQuery={setQuery}/>
-     <BookList books={books}/>
+     <BookList books={FilterBooks}/>
     </>
   )
 }
