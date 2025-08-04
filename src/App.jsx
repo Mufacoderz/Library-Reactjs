@@ -2,8 +2,9 @@
 
 import Header from './components/Header'
 import BookList from './components/BookList'
-import { useEffect, useState } from 'react'
 import AddBookForm from './components/AddBook'
+import SearchBook from './components/SearchBook';
+import { useEffect, useState } from 'react'
 
 
 function App() {
@@ -24,19 +25,12 @@ function App() {
   //   return savedBooks ? JSON.parse(savedBooks) : []
   // })
 
+  const [query, setQuery] = useState('')
+
   useEffect(()=>{
     localStorage.setItem('books', JSON.stringify(books))
   }, [books])
 
-  // useEffect(()=>{
-  //   const sampleBook = 
-  //   [
-  //     { title : "Hujan", author : "Tere Liye" },
-  //     { title : "Atomic Habbits", author : "James Clear" },
-  //     { title : "How to Win Friends", author : "Dale Carnegie" }
-  //   ]
-  //   setBooks(sampleBook)
-  // }, [])
 
 
   const addBook = (book)=>{
@@ -48,6 +42,7 @@ function App() {
     <>
      <Header/>
      <AddBookForm onAdd={addBook}/>
+     <SearchBook query={query} setQuery={setQuery}/>
      <BookList books={books}/>
     </>
   )
