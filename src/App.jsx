@@ -1,15 +1,10 @@
-
-
 import Header from './components/Header'
 import BookList from './components/BookList'
 import AddBookForm from './components/AddBook'
 import SearchBook from './components/SearchBook';
 import { useEffect, useState } from 'react'
 
-
 function App() {
-
-  
   const [books, setBooks] = useState(() => {
     try {
       const savedBooks = localStorage.getItem('books');
@@ -19,37 +14,40 @@ function App() {
       return [];
     }
   });
-  
-  // const [books, setBooks] = useState(()=>{
-  //   const savedBooks = localStorage.getItem('books')
-  //   return savedBooks ? JSON.parse(savedBooks) : []
-  // })
 
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState('');
 
-  useEffect(()=>{
-    localStorage.setItem('books', JSON.stringify(books))
-  }, [books])
+  useEffect(() => {
+    localStorage.setItem('books', JSON.stringify(books));
+  }, [books]);
 
+  const addBook = (book) => {
+    setBooks([...books, book]);
+  };
 
+  const editBook = (index, updatedBook) => {
+    const newBooks = [...books];
+    newBooks[index] = updatedBook;
+    setBooks(newBooks);
+  };
 
-  const addBook = (book)=>{
-    setBooks([...books, book])
-  }
+  const deleteBook = (index) => {
+    const newBooks = books.filter((_, i) => i !== index);
+    setBooks(newBooks);
+  };
 
-  const FilterBooks = books.filter((book) => 
+  const FilterBooks = books.filter((book) =>
     book.title.toLowerCase().includes(query.toLowerCase())
   );
-  
 
   return (
     <>
-     <Header/>
-     <AddBookForm onAdd={addBook}/>
-     <SearchBook query={query} setQuery={setQuery}/>
-     <BookList books={FilterBooks}/>
+      <Header />
+      <AddBookForm onAdd={addBook} />
+      <SearchBook query={query} setQuery={setQuery} />
+      <BookList books={FilterBooks} onEdit={editBook} onDelete={deleteBook} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
