@@ -2,6 +2,8 @@ Mini Project React Js
 ## Library
 
 ### Preview
+![Preview](src/assets/preview0.png)
+----------------------------------------
 ![Preview](src/assets/preview.png)
 
 ### Live Demo
